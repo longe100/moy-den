@@ -192,7 +192,8 @@ S.off=Array.isArray(S.off)?S.off.filter(x=>typeof x=="string"):[];if(!Array.isAr
 if(!S.sd&&!location.hash.startsWith("#v=")){S.sd=1;S.goal=2800;S.pg=120;S.fg=75;S.ug=410;S.wgoal=70;S.off=["2026-10-12","2026-10-13","2026-10-14"];
 const nid=()=>Date.now()+Math.random();S.work.push({id:nid(),d:"2026-10-11",job:"Pro Mobile",from:"10:00",to:"22:00",note:"",ok:false});
 S.fin.push({id:nid(),d:"2026-10-10",type:"in",sum:6000,cat:"Заработок",note:"",ok:false},{id:nid(),d:"2026-10-10",type:"out",sum:1500,cat:"Другое",note:"",ok:false});
-S.wt.push({id:nid(),d:"2026-10-10",kg:60,ok:false});try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}S.pg=+S.pg||120;S.budget=+S.budget||0;if(S.theme!="light")S.theme="dark";
+S.wt.push({id:nid(),d:"2026-10-10",kg:60,ok:false});try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+if(!S.sd2&&!location.hash.startsWith("#v=")){S.sd2=1;[["2026-10-15","Т2"],["2026-10-16","Т2"],["2026-10-17","Pro Mobile"],["2026-10-18","Pro Mobile"]].forEach(([d,job])=>{if(!S.work.some(x=>x.d==d&&x.job==job))S.work.push({id:Date.now()+Math.random(),d,job,from:"10:00",to:"22:00",note:"",ok:false});S.off=S.off.filter(x=>x!=d)});try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}S.pg=+S.pg||120;S.budget=+S.budget||0;if(S.theme!="light")S.theme="dark";
 if(!S.seeded){S.seeded=1;if(!S.habits.length)S.habits=["Зарядка","Чтение 20 минут","Сон до 23:00"].map((n,i)=>({id:"h"+(i+1),n}))}
 const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}pushLive()};
 const iso=d=>d.toLocaleDateString("sv"),dt=s=>new Date(s+"T12:00"),ru=(s,o)=>dt(s).toLocaleDateString("ru",o);
