@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru" data-theme="dark" data-pal="lux"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#050716"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Мой день"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Мой дневник</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&family=Unbounded:wght@500;700&display=swap">
 <style>
@@ -359,4 +361,5 @@ else if(e.key>="1"&&e.key<="5"){const i=+e.key-1;if(i!=i0){tab=TABS[i][0];render
 else if(e.key=="n"){e.preventDefault();$("[data-fab]").click()}});
 document.addEventListener("click",e=>{if(!e.target.closest("#dial,.fab"))$("#dial").classList.remove("show")});
 render("R");setInterval(refreshNotes,2e4);if(S.live)pushLive();(async()=>{try{const vu=location.hash.startsWith("#v=")?decodeURIComponent(location.hash.slice(3)):"";if(/^https:\/\/[\w-]+(-default-rtdb)?(\.[\w-]+)*\.(firebaseio\.com|firebasedatabase\.app)\/?$/.test(vu)){OWN=false;viewer(null,vu.replace(/\/+$/,""));return}if(!window.claude)return;const u=await claude.use("user"),db=await claude.use("db");OWN=!!u&&await u.isOwner();if(OWN){DB=db;pushLive()}else viewer(db)}catch(e){}})();chk();setInterval(chk,15000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)chk()});
+if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 </script></body></html>
